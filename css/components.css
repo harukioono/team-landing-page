@@ -116,20 +116,20 @@ header.site-header::before {
   justify-content: space-between;
 }
 
-/* ロゴ */
+/* ロゴ（SVG画像用） */
 .logo {
-  font-family: "Noto Sans JP", "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #0f172a;
-  letter-spacing: 0.03em;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
   padding-right: 16px;
   border-right: 2px solid #94a3b8; /* ロゴとナビの区切り線 */
-  transition: color 0.3s ease;
+  text-decoration: none;
 }
-.logo:hover {
-  color: #2563eb;
+
+/* ロゴ画像のサイズ調整 */
+.logo__img {
+  height: 40px;     /* 好きな大きさに調整してOK */
+  width: auto;
+  display: block;
 }
 
 /* ===== PC用ナビ ===== */
