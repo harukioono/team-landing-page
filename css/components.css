@@ -85,6 +85,9 @@
 /* ====================================================
    REASON
    ==================================================== */
+#reason {
+  background-color: #87CEEB !important;
+}
 
 
 /* ====================================================
@@ -95,7 +98,15 @@
 /* ====================================================
    ABOUT
    ==================================================== */
-
+#about {
+     /* [色] [画像] [繰り返し] [位置] / [サイズ] */
+	 background-image: url("../img/about-background.png");
+	 background-repeat: no-repeat;
+	 background-position: center center;
+	 background-size: cover;
+	 
+	 background-attachment: fixed;
+   }
 
 
 
@@ -128,134 +139,130 @@
 
 
 
+/* ===== ヘッダー（会社トップページ用／シンプル完成版） ===== */
+:root {
+  --container: 1080px;
+}
 
-
-
-
-
-
-/* ===== ヘッダー（会社トップページ用／完成形） ===== */
-.site-header {
+/* ヘッダー全体（背景に写真＋右に行くほど薄く） */
+header.site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: #ffffff;
+  background: transparent;
   border-bottom: 1px solid #e5e7eb;
-  transition: all 0.3s ease;
-    /* ▼ ヘッダー区別で切り替える共通変数（デフォルト値） ▼ */
-  --pad-y: 12px;                               /* 上下余白 */
-  --elev: 0 4px 12px rgba(0,0,0,.08);          /* 影の強さ */
-  --nav-fill: transparent;                     /* ナビ背景の塗り/なし */
-  --nav-border: #d1d9e6;                       /* ナビ枠線色 */
-  --nav-fg: #334155;                           /* ナビ文字色 */
-
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.header__inner {
+/* 背景写真（左に寄せて、右に行くほどフェード） */
+header.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/logo-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 98%
+  );
+          mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 98%
+  );
+}
 
-  /* 右パディングの値を変数化して再利用する */
-  --edge-pad: 24px;
-  padding: var(--pad-y) var(--edge-pad);
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* ロゴ左／ナビ右 */
+/* 内側レイアウト（ロゴ左／ナビ右） */
+.header__inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container);
   margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
+/* ロゴ（SVG画像用） */
 .logo {
-  font-family: "Noto Sans JP", "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: #0f172a;
-  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+  border-right: 2px solid #94a3b8; /* ロゴとナビの区切り線 */
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-/* 背景画像（右に行くほど透明になる） */
-
-
-
-.logo:hover {
-  color: #2563eb;
+/* ロゴ画像のサイズ調整 */
+.logo__img {
+  height: 40px;     /* 好きな大きさに調整してOK */
+  width: auto;
+  display: block;
 }
 
-/* ===== ナビゲーション ===== */
+/* ===== PC用ナビ ===== */
 .nav {
   display: flex;
-  justify-content: flex-end;
   gap: 0;
-  width: fit-content;
-  padding-right: 0;
   margin-left: auto;
 }
 
-/* ====== ナビの各項目（上下の線なし、左右のみ） ====== */
-/* 均等幅・中央寄せ・縦線のみ */
-/* 各タブ：等幅・縦線のみ・ホバーは中央から拡がる */
+/* 縦線だけで区切るタブ風ナビ（PC用） */
 .nav a {
-  /* 等幅にする */
-  flex: 0 0 140px;                 /* ← 全タブ同じ幅。必要なら130–160pxで調整 */
+  flex: 0 0 140px;
   box-sizing: border-box;
-
-  /* 中央配置・高さ固定 */
   display: flex;
   align-items: center;
   justify-content: center;
   height: 44px;
-
-  /* 文字と線の間隔を等間隔にする（左右同じ） */
-  padding-inline: 16px;            /* ← 文字↔縦線の距離を左右同じに */
-
-  /* 見た目 */
-  color: var(--nav-fg, #334155);
+  padding-inline: 16px;
+  color: #334155;
   text-decoration: none;
-
-  /* 上下の線は出さず、縦線だけ */
   border-top: none;
   border-bottom: none;
-  border-left: 1px solid var(--nav-border, #d1d9e6);
-
-  /* ホバー用の青背景アニメを敷く準備 */
+  border-left: 1px solid #d1d9e6;
   position: relative;
   overflow: hidden;
-  transition: color .25s ease, border-color .25s ease;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
-
-
-
-/* 右端にも縦線（外枠の右） */
 .nav a:last-child {
   border-right: 1px solid #d1d5db;
 }
 
-/* ホバー演出：中央から左右へ背景が拡がる */
+/* 中央から広がるホバー背景（PC用） */
 .nav a::before {
   content: "";
   position: absolute;
-  inset: 0;                    /* 全面 */
+  inset: 0;
   background: #2563eb;
-  transform: scaleX(0);        /* 初期は見えない */
-  transform-origin: center;    /* ★中央起点で拡がる */
+  transform: scaleX(0);
+  transform-origin: center;
   transition: transform 0.25s ease;
-  z-index: -1;                 /* 文字の下に敷く */
+  z-index: -1;
 }
 .nav a:hover::before {
-  transform: scaleX(1);        /* 中央から左右へ全幅に */
+  transform: scaleX(1);
 }
 .nav a:hover {
-  color: #ffffff;              /* 文字を白に（好みで） */
-  /* border-color は変えたいなら #2563eb に */
+  color: #ffffff;
 }
 
-/* 右端の縦線（border-right）もホバーで色を合わせる */
-.nav a:last-child:hover {
-  border-right-color: #2563eb;
+/* スクロール時ヘッダー縮小 */
+.site-header.shrink {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-bottom-color: #dbe2ef;
 }
 
-/* ===== ハンバーガーメニュー（スマホ用） ===== */
+/* ===== ハンバーガー（スマホ） ===== */
 .menu-btn {
   display: none;
   flex-direction: column;
@@ -265,168 +272,86 @@
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 9999;  /* メニューより手前に */
 }
 .menu-btn span {
   display: block;
-  height: 3px;
   width: 100%;
+  height: 3px;
   background: #0f172a;
   border-radius: 2px;
   transition: all 0.3s ease;
+  transform-origin: center;
 }
 
-/* スクロール時に縮む効果 */
-.site-header.shrink {
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-bottom-color: #dbe2ef;
-  padding-block: 4px;
+/* 三本線 → バツ */
+.menu-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ===== スマホ対応 ===== */
+/* ===== スマホ用スライドメニュー ===== */
 @media (max-width: 768px) {
-  .nav {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    width: 200px;
-    padding: 20px;
-    border-left: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
-  }
-  .nav.active {
-    transform: translateY(0);
-  }
 
+  /* ハンバーガー表示 */
   .menu-btn {
     display: flex;
   }
+
+  /* ヘッダー内の余白少し減らす */
+  .header__inner {
+    padding: 10px 16px;
+  }
+
+  /* nav を「画面右から出てくるパネル」にする */
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 320px;
+    height: 100vh;
+    background: #ffffff;
+    padding: 80px 24px 24px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+
+    transform: translateX(100%);   /* 初期状態：画面外 */
+    transition: transform 0.3s ease;
+    z-index: 200;
+  }
+
+  .nav.active {
+    transform: translateX(0);      /* 右から出てくる */
+  }
+
+  /* スマホでは縦メニュー用に調整 */
+  .nav a {
+    width: 100%;
+    justify-content: flex-start;
+    height: auto;
+    padding: 12px 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    color: #0f172a;
+  }
+
+  /* PC用のホバー演出はスマホでは消す */
+  .nav a::before {
+    content: none;
+  }
 }
 
-/* ▼▼▼ ロゴ背景に写真を表示＋スクロールでフェードする効果 ▼▼▼ */
-:root {
-  --logo-photo: url('../img/logo-bg.jpg');
-  --logo-photo-alpha: 1;
- --container: 1080px;     /* 中央コンテナ幅（今の max-width と同じ） */
- --nav-edge-gap: 8px;     /* 右端に残したい余白（お好みで調整） */
-}
-
-
-/* ロゴ背景画像を ::before に描画 */
-.logo {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
-
-/* ▼▼▼ ここから“色は固定”でヘッダーを区別するCSS（置き換え） ▼▼▼ */
-
-/* 色は白のまま。質感とレイアウトだけ切替えるための共通変数 */
-.site-header{
-  background:#fff;
-  border-bottom:1px solid #e5e7eb;
-  --pad-y: 12px;                      /* ヘッダー上下余白 */
-  --elev: 0 4px 12px rgba(0,0,0,.08); /* 影 */
-  --nav-fill: transparent;            /* ナビ背景 */
-  --nav-border: #d1d9e6;              /* ナビ枠色 */
-  --nav-fg: #334155;                  /* ナビ文字色 */
-}
-.header__inner {
-  padding: var(--pad-y) 0;       /* 右パディングを0に */
-}
-
-
-/* ① トップ(#hero付近)：ゆったり・影ほぼ無し・ナビは淡い“塗り” */
-.site-header[data-variant="hero"]{
-  --pad-y: 20px;
-  --elev: 0 1px 0 rgba(0,0,0,.04);
-  --nav-fill: #f1f5f9;
-  --nav-border: #cbd5e1;
-  --nav-fg: #0f172a;
-  box-shadow: var(--elev);
-}
-
-/* ② それ以外(#reason/#services/#about)：低め・影強め・ナビは“枠のみ” */
-.site-header[data-variant="reason"],
-.site-header[data-variant="services"],
-.site-header[data-variant="about"]{
-  --pad-y: 10px;
-  --elev: 0 6px 18px rgba(0,0,0,.10);
-  --nav-fill: transparent;
-  --nav-border: #d1d9e6;
-  --nav-fg: #334155;
-  box-shadow: var(--elev);
-}
-
-
-
-/* ▲▲▲ “色は固定”で区別するCSS ここまで（置き換え完了） ▲▲▲ */
-
-
-
-/* =====================================
-   ▼▼▼ ここからヘッダー区別バリアントCSS追記 ▼▼▼
-   ===================================== */
-
-/* 基本（共通） */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-  transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-
-.logo {
-  font-weight: 800;
-  letter-spacing: .03em;
-  text-decoration: none;
-  color: #0f172a;
-  transition: color .25s ease, background .25s ease, box-shadow .25s ease;
-}
-
-/* ▼ “色は変えずにヘッダーを区別”するバリアント ▼ */
-
-/* トップ（#hero 付近）：ゆったり・影ほぼ無し・ナビは淡い塗り */
-.site-header[data-variant="hero"]{
-  --pad-y: 20px;
-  --elev: 0 1px 0 rgba(0,0,0,.04);
-  --nav-fill: #f1f5f9;
-  --nav-border: #cbd5e1;
-  --nav-fg: #0f172a;
-  box-shadow: var(--elev);
-}
-
-/* それ以外（#reason/#services/#about）：低め・影強め・ナビは枠のみ */
-.site-header[data-variant="reason"],
-.site-header[data-variant="services"],
-.site-header[data-variant="about"]{
-  --pad-y: 10px;
-  --elev: 0 6px 18px rgba(0,0,0,.10);
-  --nav-fill: transparent;
-  --nav-border: #d1d9e6;
-  --nav-fg: #334155;
-  box-shadow: var(--elev);
-}
-
-
-/* スクロール縮小 */
-.site-header.shrink { box-shadow: 0 6px 18px rgba(0,0,0,.08); }
-
-/* =====================================
-   ▲▲▲ ここまでヘッダー区別バリアントCSS追記 ▲▲▲
-   ===================================== */
-
-
-
+/* ====== ここから下はフッター等（元のままでOK） ====== */
 
 /* ====================================================
    FOOTER（完成済み） 
@@ -479,101 +404,10 @@
   width: 100%;
 }
 
-/* ===============================
-   ヘッダー内の構成要素を区別して見せるデザイン
-   =============================== */
-
-/* ヘッダー全体 */
-.site-header {
-  background: linear-gradient(to right, #ffffff 0%, #f8fafc 100%);
-  border-bottom: 1px solid #dbe2ef;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-/* 内側コンテナ：左右にロゴとナビを配置 */
-.header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  max-width: var(--container);
-  margin: 0 auto;
-}
-
-/* ロゴ部分（左側） */
-.logo {
-  font-family: "Noto Sans JP", "Roboto", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
-  letter-spacing: 0.03em;
-  padding-right: 16px;
-  border-right: 2px solid #94a3b8; /* 区切り線でロゴとナビを分ける */
-}
-
-
-/* スクロール時に縮む効果 */
-.site-header.shrink {
-  background-color: rgba(255,255,255,0.95);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  border-bottom-color: #cbd5e1;
-  transition: all 0.3s ease;
-}
-
-/* スマホ時：ハンバーガーメニュー対応 */
-@media (max-width: 768px) {
-  .header__inner {
-    flex-wrap: wrap;
-  }
-  .logo {
-    border-right: none;
-    padding-right: 0;
-    margin-bottom: 8px;
-  }
-  .nav {
-    width: 100%;
-    justify-content: space-around;
-    gap: 0;
-  }
-}
-
-/* === ナビを右端に寄せつつ、少しだけ余白を残す確実版 === */
-.site-header .header__inner { 
-  position: relative; 
-}
-
-/* 右へ固定配置して端から余白を保つ */
-.site-header .header__inner .nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0;
-  margin-left: auto;
-  margin-right: 5px;   /* ← ここで右端から5pxだけ余白を残す */
-  padding: 0;
-  position: static;    /* ← absolute を削除 */
-  transform: none;     /* ← translateYも削除 */
-}
-
-
-
-/* スマホでは固定を解除して従来通り */
-@media (max-width: 768px) {
-  .site-header .header__inner .nav {
-    position: static;
-    transform: none;
-    right: auto;
-  }
-}
 
 /* === 最終調整版：ナビを右端へ寄せて、ほんの少し余白を残す === */
 @media (min-width: 769px) {
-  header.site-header > .header__inner {
-    position: relative !important;
-  }
+  
 
   header.site-header > .header__inner > nav.nav {
     display: flex !important;
@@ -581,15 +415,14 @@
     align-items: center !important;
     gap: 0 !important;
     margin-left: auto !important;
-    margin-right: 6px !important;  /* ← 端からの余白。数値を変えると距離が変わる */
+    margin-right: 6px !important; /* ← 端からの余白。数値を変えると距離が変わる */
     padding: 0 !important;
-   transform: translateX(calc((100vw - var(--container)) / 2 - 3px)) !important;
+    transform: translateX(calc((100vw - var(--container)) / 2 - 3px)) !important;
   }
 }
 
-
 /* === ヘッダー全体に写真を敷き、ナビ側(右)へ行くほど透明にフェード === */
-header.site-header{
+header.site-header {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -598,7 +431,7 @@ header.site-header{
   background: transparent !important; /* ← 既存のグラデ背景を打ち消す */
 }
 
-header.site-header::before{
+header.site-header::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -606,25 +439,134 @@ header.site-header::before{
   /* 写真：ヘッダーを全面カバー。左側に構図を寄せる */
   background-image: url("../img/logo-bg.jpg");
   background-repeat: no-repeat;
-  background-size: cover;            /* ← ヘッダー全体を埋める */
-  background-position: left center;  /* ← 握手が左に来るように */
+  background-size: cover;       /* ← ヘッダー全体を埋める */
+  background-position: left center; /* ← 握手が左に来るように */
 
   z-index: 0;
   pointer-events: none;
 
   /* 右へ行くほど透明に（数値を調整可） */
-  -webkit-mask-image: linear-gradient(to right,
-      rgba(0,0,0,1) 60%,
-      rgba(0,0,0,0) 98%);
-          mask-image: linear-gradient(to right,
-      rgba(0,0,0,1) 60%,
-      rgba(0,0,0,0) 98%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 98%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,1) 60%,
+    rgba(0,0,0,0) 98%
+  );
 }
 
 /* 中身は前面に */
-header.site-header .header__inner{
+header.site-header .header__inner {
   position: relative;
   z-index: 1;
   background: transparent;
 }
+
+/* =======================================
+   スマホ用：ハンバーガーメニュー強制調整
+   ======================================= */
+@media (max-width: 768px) {
+
+  /* ヘッダー内レイアウトをシンプルにする */
+  header.site-header .header__inner {
+    padding: 10px 16px;
+    justify-content: space-between;
+  }
+
+  /* ハンバーガーボタンを表示 */
+  .menu-btn {
+    display: flex;
+  }
+
+  /* PC用の「右端寄せナビ」指定をスマホでは上書きしてリセット */
+  header.site-header > .header__inner > nav.nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 80px 24px 24px;
+    width: 70%;
+    max-width: 320px;
+
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.15);
+
+    transform: translateX(100%); /* ★最初は画面外 */
+    transition: transform 0.3s ease;
+    z-index: 200;
+  }
+
+  /* メニュー開いたとき（JSで .active を付ける想定） */
+  header.site-header > .header__inner > nav.nav.active {
+    transform: translateX(0);   /* ★右からスライドイン */
+  }
+
+  /* スマホでは縦メニューなので、線や幅をスマホ用に調整 */
+  header.site-header > .header__inner > nav.nav a {
+    flex: 0 0 auto;
+    width: 100%;
+    justify-content: flex-start;
+    padding-inline: 8px;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    height: auto;
+  }
+
+  header.site-header > .header__inner > nav.nav a:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ====== ハンバーガー → バツ（×）アニメーション ====== */
+
+/* 三本線（共通） */
+.menu-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #0f172a;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* active のとき */
+.menu-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ハンバーガーが開いている時は × にする */
+.menu-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* アニメーションが効くように共通指定（まだ無ければ追加） */
+.menu-btn span {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
 

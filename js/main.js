@@ -1,62 +1,40 @@
-// ===== ハンバーガーメニューの開閉 =====
-const menuBtn = document.querySelector(".menu-btn");
-const nav = document.querySelector(".nav");
+// js/main.js
 
-if (menuBtn && nav) {
+document.addEventListener("DOMContentLoaded", () => {
+  // ===== ハンバーガーメニューの開閉 =====
+  const menuBtn = document.querySelector(".menu-btn");
+  const nav = document.querySelector(".nav");
+
+  if (!menuBtn || !nav) return;
+
   menuBtn.addEventListener("click", () => {
-    nav.classList.toggle("active");
-    menuBtn.classList.toggle("open");
+    const isOpen = nav.classList.toggle("active"); // スライドメニューのON/OFF
+    menuBtn.classList.toggle("open", isOpen);      // 三本線 ⇔ ×
   });
-}
 
-// ===== スクロール時のフェードイン（必要な人だけ使う） =====
-const fadeEls = document.querySelectorAll(".fade");
-if (fadeEls.length) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
+  // メニュー内リンクを押したら閉じる
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("active");
+      menuBtn.classList.remove("open");
     });
   });
-  fadeEls.forEach(el => observer.observe(el));
-}
 
-// ===== ヘッダーの縮小エフェクト =====
-window.addEventListener("scroll", () => {
+  // ===== ヘッダー縮小（必要なら残す） =====
   const header = document.querySelector(".site-header");
   if (!header) return;
-  if (window.scrollY > 50) {
-    header.classList.add("shrink");
-  } else {
-    header.classList.remove("shrink");
-  }
-});
 
-// ===== ▼▼▼ ここからヘッダーバリアント切替JS追記 ▼▼▼ =====
-(function () {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-  const sections = ['hero', 'reason', 'services', 'about']
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-  const setVariant = () => {
-    let current = 'hero';
-    let topMin = Infinity;
-    sections.forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top >= -200 && rect.top < topMin) {
-        topMin = rect.top;
-        current = sec.id;
-      }
-    });
-    header.dataset.variant = current;
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      header.classList.add("shrink");
+    } else {
+      header.classList.remove("shrink");
+    }
   };
 
-  setVariant();
-  window.addEventListener('scroll', setVariant, { passive: true });
-  window.addEventListener('resize', setVariant);
-})();
-// ===== ▲▲▲ ここまでヘッダーバリアント切替JS追記 ▲▲▲ =====
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+});
 
 
 // ===== 以下、各担当の追記スペース =====
