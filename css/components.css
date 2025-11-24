@@ -20,12 +20,48 @@
 /* ====================================================
    ABOUT
    ==================================================== */
+#about {
+	position: relative;
+	
+	background-image: url("../img/about-background.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover; 
+}
 
+#about::before {
+	content: "";
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background-color: rgba(255, 255, 255, 0.25);
+	 
+	 /* 要素の背景のすぐ上に配置 */
+	 z-index: 1; 
+}
 
+#about .container {
+	position: relative; /* z-indexが効くように設定 */
+	z-index: 2; /* オーバーレイ(z-index: 1)よりも上にする */
+}
+   
+section#about.section {
+	padding-top: 50px;
+}
 
+.mission-statement h2 {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-family: 'M PLUS 1p', sans-serif;
+}
 
-
-
+.mission-statement h3 {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: 'M PLUS 1p', sans-serif;
+}
 
 
 
