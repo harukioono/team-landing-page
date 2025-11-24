@@ -39,7 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== 以下、各担当の追記スペース =====
 
+const slides = document.querySelectorAll('.slides .slide');
+let index = 0;
 
+function changeSlide() {
+  slides[index].classList.remove('active');
+  index = (index + 1) % slides.length;
+  slides[index].classList.add('active');
+}
+
+setInterval(changeSlide, 4000); 
 
 
 
