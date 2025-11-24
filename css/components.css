@@ -94,6 +94,60 @@
    SERVICES
    ==================================================== */
 
+.services {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+
+.service-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.image-box {
+    flex-shrink: 0;
+}
+
+.image-box img {
+    width: 200px !important;
+    height: auto !important;
+    border-radius: 4px;
+    object-fit: cover;
+    display: block;
+}
+
+.text-area {
+    flex: 1;
+}
+
+.text-area h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.text-area p {
+    line-height: 1.6;
+    color: #555;
+    margin: 10px 0 0 0;
+}
+
+.btn-area {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
 
 /* ====================================================
    ABOUT
@@ -109,11 +163,66 @@
    }
 
 
+.blue-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: 0.2s;
+}
 
+.blue-btn:hover {
+    background-color: #2980b9;
+}
 
+/* ====================================================
+   ABOUT
+   ==================================================== */
+#about {
+	position: relative;
+	
+	background-image: url("../img/about-background.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover; 
+}
 
+#about::before {
+	content: "";
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background-color: rgba(255, 255, 255, 0.25);
+	 
+	 /* 要素の背景のすぐ上に配置 */
+	 z-index: 1; 
+}
 
+#about .container {
+	position: relative; /* z-indexが効くように設定 */
+	z-index: 2; /* オーバーレイ(z-index: 1)よりも上にする */
+}
+   
+section#about.section {
+	padding-top: 50px;
+}
 
+.mission-statement h2 {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-family: 'M PLUS 1p', sans-serif;
+}
+
+.mission-statement h3 {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-family: 'M PLUS 1p', sans-serif;
+}
 
 
 
