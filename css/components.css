@@ -81,6 +81,48 @@
       font-size: 28px;
       margin-top: 10px;
     }
+    
+    /* ==== ヒーロー（スマホ用レイアウト調整） ==================== */
+@media (max-width: 768px) {
+
+  /* ヒーロー全体：左右に少し余白を持たせる */
+  #hero {
+    height: 70vh;           /* ちょっと低めにして上下の圧迫を減らす */
+    padding: 0 16px;
+  }
+
+  /* キャッチコピー（上側の一文） */
+  .hero-copy {
+    top: 12%;               /* 位置を少し上に */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;        /* スマホ用に小さく */
+    line-height: 1.5;
+    width: 90%;             /* はみ出さないように横幅を制限 */
+    white-space: normal;    /* ちゃんと折り返すように */
+  }
+
+  /* 下の3行まとめ部分 */
+  .hero-content {
+    bottom: 10%;            /* 位置を少し上に */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .hero-content div {
+    font-size: 16px;        /* 行ごとを小さく */
+    line-height: 1.7;
+    margin-top: 6px;
+  }
+
+  /* 背景画像：スマホではトリミング優先で全画面に */
+  .slides .slide {
+    object-fit: cover;      /* 余白よりも「埋める」優先に */
+  }
+}
+
 
 /* ====================================================
    REASON
