@@ -16,7 +16,9 @@
   <!-- ===== ヘッダー（完成済み） ===== -->
  <header class="site-header">
   <div class="container header__inner">
-    <a href="#" class="logo">CMC IT Division</a>
+   <a href="#" class="logo">
+      <img src="img/cmc-logo.svg" alt="CMC" class="logo__img">
+    </a>
 
     <!-- ハンバーガーメニュー（スマホ用） -->
     <button class="menu-btn" aria-label="メニューを開く">
@@ -36,7 +38,23 @@
 
     <!-- ===== ヒーローセクション ===== -->
     <section id="hero" class="section container">
-      <!-- TODO: h1・p・a.btn・画像などを配置 -->
+
+      <div class="slides">
+        <img src="img/hero1.jpg" class="slide active" alt="">
+        <img src="img/hero2.jpg" class="slide" alt="">
+        <img src="img/hero3.jpg" class="slide" alt="">
+      </div>
+
+      <p class="hero-copy">キャッチコピーをここに配置できます。</p>
+
+      <div class="hero-content">
+
+        <div>出会いが価値を生む</div>
+        <div>人と企業を美しくつなぐ</div> 
+        <div>最適な人材をご紹介します</div>
+
+      </div>
+
     </section>
 
     <!-- ===== 理由セクション ===== -->
@@ -48,6 +66,7 @@
     <section id="services" class="section container">
       <!-- TODO: h2・2〜3項目（h3+p）で紹介 -->
       <div class="services">
+
 
     <div class="service-item">
       <div class="image-box">
@@ -77,6 +96,43 @@
     </div>
   </div>
 </section>
+
+  <div class="service-item">
+      <div class="image-box">【文章の左側に画像】</div>
+      <div class="text-area">
+          <h3>仕事をお探しの方へ</h3>
+          <p>
+              製造・物流系 と 販売・サービス系 を中心に<br>
+              オフィス・営業・IT系等 幅広い職務分野を取り扱っています<br>
+              独自の登録システムにより お客様と派遣先企業様との<br>
+              スムーズなマッチングを実現しています
+          </p>
+          <div class="btn-area">
+              <a href="#" class="pink-btn">シーエムシーの人材派遣について ▶</a><br>
+              <a href="#" class="pink-btn">お仕事検索 ▶</a><br>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="service-item">
+      <div class="image-box">【文章の左側に画像】</div>
+      <div class="text-area">
+          <h3>企業のご担当者様へ</h3>
+          <p>
+              シーエムシーは「お客様のご要望以上の人材パフォーマンス」を追求しています<br>
+              各種のニーズや業務へのご案内にも力を注ぎ<br>
+              「戦略的かつメリットの確かな人材派遣サービス」の提案・提供に努めています
+          </p>
+          <div class="btn-area">
+              <a href="#" class="pink-btn">シーエムシーについて ▶</a><br>
+              <a href="#" class="pink-btn">お問い合わせ ▶</a><br>
+          </div>
+      </div>
+  </div>
+
+</div>
+    </section>
 
     <!-- ===== 企業情報セクション（新設） ===== -->
     <section id="about" class="section">
@@ -126,6 +182,8 @@
       <small class="footer__copy">© 2025 CMC Inc.</small>
     </div>
   </footer>
+  
+
 
 <script src="js/main.js"></script>
 </body>
