@@ -6,6 +6,81 @@
    自分の担当セクションのデザインをここに書く
    ==================================================== */
 
+    #hero {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+      padding: 0;
+      background: #53afb6; /* 青と緑の中間色 */
+    }
+
+    /* ===== スライド画像エリア ===== */
+
+    .slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #53afb6;
+    }
+
+    /* ===== スライド画像 ===== */
+
+    .slides .slide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100%;           /* 親の高さに合わせる */
+      width: 100%;            /* 横幅は自動で縦横比維持 */
+      max-width: 100%;        /* 幅がはみ出ないように制限 */
+      object-fit: contain;    /* 切らずに枠内に収める */
+      object-position: top;
+      opacity: 0;
+      transition: opacity 2s ease;
+      background: #53afb6;    /* 余白を背景色で埋める */
+    }
+
+    .slides .slide.active {
+      opacity: 1;
+    }
+
+
+    /* ===== キャッチコピー ===== */
+
+    .hero-copy {
+      position: absolute;
+      top: 20%;               
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 44px;
+      font-weight: bold;
+      font-family:"Playfair Display","Noto Serif JP", serif;
+      color: white;
+      z-index: 6;            
+      text-align: center;
+    }
+
+    /* ===== テキストエリア（hero-content内） ===== */
+
+    .hero-content {
+      position: absolute;
+      bottom: 15%;           
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: white;
+      z-index: 6;             
+    }
+
+    .hero-content div {
+      letter-spacing: 1px;
+      font-size: 28px;
+      margin-top: 10px;
+    }
 
 /* ====================================================
    REASON
