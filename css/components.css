@@ -157,11 +157,6 @@
    SERVICES
    ==================================================== */
 
-#services {
-    background-color: #9ED9F0;
-    padding: 60px 0;
-}
-
 .services {
     display: flex;
     flex-direction: column;
