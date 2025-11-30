@@ -12,7 +12,7 @@
     margin-right: calc(50% - 50vw);
   }
 
-<<<<<<< HEAD
+
     #hero.hero-split {
   display: grid;
   grid-template-columns: 6fr 4fr;   
@@ -23,16 +23,14 @@
   overflow: hidden;
   
 }
-=======
-  /* ===== ヒーロー全体 ===== */
->>>>>>> branch 'main' of https://github.com/harukioono/team-landing-page.git
 
-<<<<<<< HEAD
+  /* ===== ヒーロー全体 ===== */
+
     
  
 
 
-=======
+
   #hero.hero-split {
     position: relative;
     width: 100vw;
@@ -40,7 +38,7 @@
     min-height: 600px;   /* ✅ 下まで写真が見える安全値 */
     overflow: hidden;
   }
->>>>>>> branch 'main' of https://github.com/harukioono/team-landing-page.git
+
 
   /* ===== スライド画像エリア ===== */
 
