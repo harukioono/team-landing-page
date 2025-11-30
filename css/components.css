@@ -136,12 +136,17 @@
    SERVICES
    ==================================================== */
 
+#services {
+    background-color: #9ed9f0;
+    padding: 60px 0;
+}
+
 .services {
     display: flex;
     flex-direction: column;
     gap: 40px;
     max-width: 900px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
@@ -150,8 +155,8 @@
     gap: 20px;
     align-items: flex-start;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 30px;
+    border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
