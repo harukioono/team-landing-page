@@ -6,37 +6,25 @@
    自分の担当セクションのデザインをここに書く
    ==================================================== */
 
+    /* ===== 全幅設定 ===== */
+
     .full-width {
       width: 100vw;
       margin-left: calc(50% - 50vw);
       margin-right: calc(50% - 50vw);
     }
 
+    /* ===== ヒーロー全体 ===== */
+
     #hero.hero-split {
-      display: grid;
-      grid-template-columns: 6fr 4fr;   
+      position: relative;
       width: 100vw;
       height: 80vh;
-      min-height: 500px;
-      max-height: 900px;
-      overflow: hidden;
-
-    }
-
-    /* ===== スライド画像エリア ===== */
-
-    .hero-image {
-      position: relative;
-      width: 100%;
-      height: 100%;
+      min-height: 600px;
       overflow: hidden;
     }
 
-    .slides {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
+    /* ===== スライド画像 ===== */
 
     .slides .slide {
       position: absolute;
@@ -44,136 +32,238 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center bottom;
       opacity: 0;
       transition: opacity 1.5s ease;
-      display: block;
+    }
+    .slides .slide.active { opacity: 1; }
+
+    /* ===== 黒系オーバーレイ ===== */
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
     }
 
-    .slides .slide.active {
-      opacity: 1;
+    /* ===== 左上キャッチコピー ===== */
+    
+    .hero-copy {
+      position: absolute;
+      top: clamp(10px, 1%, 30px); 
+      left: 3vw;
+      font-family: "Playfair Display", "Noto Serif JP", serif; 
+      font-weight: 700;
+      font-size: clamp(48px, 6vw, 96px); 
+      line-height: 1.1;
+      color: #d5ac44;
+      z-index: 2;
+      text-align: left;
+      letter-spacing: 0.03em;
+      white-space: nowrap; 
     }
 
-    /* ===== 右：テキストエリア ===== */
+    /* ===== 下部テキスト ===== */
 
     .hero-text {
-      position: relative;
-      background: #53afb6;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      position: absolute;
+      bottom: 50px;
+      right: 12vw;
+      width: 300px;
+      padding: 40px 20px;
       text-align: center;
-      padding: 0 5vw;
+      white-space: nowrap; 
+      color: white;
       z-index: 2;
-      background: #3bd6de; 
+      font-family: "Noto Sans JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+
     }
 
-    /* キャッチコピー */
-
-    .hero-copy {
-      font-size: clamp(22px, 2.8vw, 60px);
-      font-weight: bold;
-      font-family: "Playfair Display","Noto Serif JP", serif;
-      color: #ec420e;
-      letter-spacing: 1px;
-      margin-bottom: 100px;
-    }
-
+    /* 下部まとめテキスト */
+    
     .hero-content div {
+      font-size: clamp(16px, 2vw, 40px);
+      margin-top: clamp(10px, 2vw, 30px);
       letter-spacing: 1px;
-      font-size: clamp(16px, 2vw, 36px);
-      margin-top: 20px;
       color: white;
     }
 
-    
     /* ==== ヒーロー（スマホ用レイアウト調整） ==================== */
 
     @media (max-width: 768px) {
 
-    /* ヒーロー全体：左右に少し余白を持たせる */
+      /* ヒーロー全体：高さ自動調整・最小高さ指定 */
 
-    #hero.hero-split {
-      height: auto;           
-      grid-template-columns: 1fr;
-      min-height: auto;
+      #hero.hero-split {
+        height: auto;
+        min-height: 50vh;
+      }
+
+      /* 上：画像 */
+
+      .hero-image {
+        height: 50vh;
+      }
+
+      /* 画像は見切れ防止 */
+
+      .slides .slide {
+        object-fit: cover; 
+      }
+
+      /* キャッチコピー */
+
+      .hero-copy {
+        font-size: clamp(20px, 5vw, 28px);
+        top: clamp(10px, 5%, 30px);
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        letter-spacing: 0.02em;
+        white-space: normal;
+      }
+
+      /* 下部テキスト */
+
+      .hero-text {
+        width: 90%;
+        bottom: 5%;
+        right: 50%;
+        transform: translateX(50%);
+        font-size: clamp(14px, 4vw, 20px);
+        line-height: 1.5;
+        padding: 24px 16px 32px;
+      }
+
+      /* 下のまとめテキスト */
+
+      .hero-content {
+        bottom: 10%;
+        width: 100%;
+        padding: 0 12px;
+      }
+
+        .hero-content div {
+        font-size: clamp(14px, 3vw, 18px);
+        line-height: 1.7;
+        margin-top: clamp(5px, 2vw, 10px);
+      }
     }
-
-    /* 上：画像 */
-
-    .hero-image {
-      height: 50vh;                /* 画面の半分を画像に */
-    }
-
-    /* 画像は見切れ防止 */
-
-    .slides .slide {
-      object-fit: contain;         /* スマホは contain */          
-    }
-
-    /* 下：テキスト */
-
-    .hero-text {
-      padding: 32px 16px 40px;
-    }
-
-    /* キャッチコピー */
-
-    .hero-copy {
-      font-size: 22px;
-      margin-bottom: 24px;
-      white-space: normal;
-      text-align: center;
-    }
-
-    /* 下の3行まとめ部分 */
-
-    .hero-content {
-      bottom: 10%;         
-      width: 100%;
-      padding: 0 12px;
-    }
-
-    /* 3行テキスト */
-
-    .hero-content div {
-      font-size: 16px;
-      line-height: 1.7;
-      margin-top: 10px;
-    }
-
-  }
 
 /* ====================================================
    REASON
    ==================================================== */
+
+/* ====================================================
+   REASON（理由セクション）
+   ==================================================== */
 #reason {
-  background-color: #87CEEB !important;
+  /* ヒーローとつながる感じのグラデ背景 */
+  background: linear-gradient(135deg, #25c4d3 0%, #7ed3ff 100%);
+  padding: 60px 0 80px;
 }
+
+/* タイトルを中央に */
+#reason .section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+/* カードを横並び（PC） */
+.reason-cards {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* 1枚1枚のカード */
+.reason-card {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 18px;
+  padding: 24px 20px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* アイコン画像 */
+.reason-img img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* 見出し・本文 */
+.reason-text h3 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.reason-text p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 14px;
+  color: #1f2933;
+}
+
+/* スマホでは1列レイアウトにする */
+@media (max-width: 768px) {
+  #reason {
+    padding: 40px 0 48px;
+  }
+
+  .reason-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .reason-card {
+    padding: 20px 18px;
+  }
+
+  #reason .section-title {
+    font-size: 24px;
+  }
+}
+
+
 
 
 /* ====================================================
    SERVICES
    ==================================================== */
 
+#services {
+    background-color: #9ed9f0;
+    padding: 60px 0;
+}
+
 .services {
     display: flex;
     flex-direction: column;
     gap: 40px;
     max-width: 900px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 0 20px;
 }
-
 
 .service-item {
     display: flex;
     gap: 20px;
     align-items: flex-start;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 30px;
+    border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -212,6 +302,7 @@
     margin-top: 10px;
 }
 
+
 /* ====================================================
    ABOUT
    ==================================================== */
@@ -244,14 +335,21 @@
 /* ====================================================
    ABOUT
    ==================================================== */
+/* 画面の端まで砂の背景を広げる */
 #about {
-	position: relative;
-	
-	background-image: url("../img/about-background.png");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; 
+  position: relative;
+
+  /* ここで「画面幅いっぱい」にする */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background-image: url("../img/about-background.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
+
 
 #about::before {
 	content: "";
@@ -286,14 +384,6 @@ section#about.section {
 	margin-bottom: 10px;
 	font-family: 'M PLUS 1p', sans-serif;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -740,5 +830,63 @@ header.site-header .header__inner {
   transition: all 0.3s ease;
   transform-origin: center;
 }
+
+/* ABOUT セクションを横幅いっぱいに広げる */
+.fullwidth-about {
+  width: 100%;
+  max-width: 100%;
+  padding: 0; /* 必要なら調整 */
+}
+
+/* 背景画像は横まで広げたいので繰り返し防止＋ cover */
+#about {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+/* Hero → Reason のフェード段差 
+.fade-divider {
+  height: 120px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    #87CEEB 100%
+  );
+}*/
+
+/*#services::before {
+  content: "";
+  position: absolute;
+  top: -160px;
+  right: 0;
+  width: 60vw;
+  height: 800px;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      1200px 800px at 110% 0,
+      rgba(255,255,255,0) 70%,
+      rgba(91, 211, 232, 0.45) 72%,
+      rgba(91, 211, 232, 0) 78%
+    ),
+    radial-gradient(
+      1100px 800px at 110% 0,
+      rgba(255,255,255,0) 73%,
+      rgba(64, 196, 222, 0.45) 75%,
+      rgba(64, 196, 222, 0) 81%
+    ),
+    radial-gradient(
+      1000px 800px at 110% 0,
+      rgba(255,255,255,0) 76%,
+      rgba(35, 178, 205, 0.45) 78%,
+      rgba(35, 178, 205, 0) 84%
+    );
+  background-repeat: no-repeat;
+}*/
 
 

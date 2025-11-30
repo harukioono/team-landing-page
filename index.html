@@ -34,43 +34,41 @@
   </div>
 </header>
 
+
+
   <main>
 
     <!-- ===== ヒーローセクション ===== -->
-    <section id="hero" class="full width hero-split">
+<section id="hero" class="full-width hero-split">
 
-      <div class="hero-image">
-        <div class="slides">
+  <!-- スライド画像 -->
+  <div class="hero-image">
+    <div class="slides">
+      <img src="img/hero1.jpg" class="slide active" alt="">
+      <img src="img/hero2.jpg" class="slide" alt="">
+      <img src="img/hero3.jpg" class="slide" alt="">
+    </div>
+  </div>
 
-          <img src="img/hero1.jpg" class="slide active" alt="">
-          <img src="img/hero2.jpg" class="slide" alt="">
-          <img src="img/hero3.jpg" class="slide" alt="">
+  <!-- 黒系オーバーレイ -->
+  <div class="hero-overlay"></div>
 
-        </div>
-      </div>
+  <!-- 左上キャッチコピー -->
+  <p class="hero-copy">Cherish Every Connection</p>
 
-      <div class="hero-text">
+  <!-- 下部テキスト -->
+  <div class="hero-text">
+    <div class="hero-content">
+      <div>出会いが価値を生む</div>
+      <div>人と企業を美しくつなぐ</div>
+      <div>最適な人材をご紹介します</div>
+    </div>
+  </div>
 
-        <p class="hero-copy">Cherish Every Connection</p>
+</section>
 
-        <div class="hero-content">
 
-          <div>出会いが価値を生む</div>
-          <div>人と企業を美しくつなぐ</div>
-          <div>最適な人材をご紹介します</div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ===== 理由セクション ===== -->
-    <section id="reason" class="section container">
-      <!-- TODO: h2・理由3つ（h3+p）をカード形式で -->
-    </section>
-
-    <!-- ===== サービスセクション ===== -->
+<!-- ===== サービスセクション ===== -->
     <section id="services" class="section container">
 
       <!-- TODO: h2・2〜3項目（h3+p）で紹介 -->
@@ -110,37 +108,86 @@
   </div>
 </section>
 
+<div class="fade-divider"></div>
+
+
+    <!-- ===== 理由セクション ===== -->
+        <!-- ===== 理由セクション ===== -->
+    <section id="reason" class="section">
+      <div class="container">
+        <h2 class="section-title">当社が選ばれる理由</h2>
+
+        <div class="reason-cards">
+
+          <!-- 理由① -->
+          <div class="reason-card">
+            <div class="reason-img">
+              <img src="img/reason1.png" alt="つながりを大切に">
+            </div>
+            <div class="reason-text">
+              <h3>つながりを大切に</h3>
+              <p>
+                人と人、 人と仕事、 人と企業──<br>
+                すべての“つながり”を尊重し、大切にしています。
+              </p>
+            </div>
+          </div>
+
+          <!-- 理由② -->
+          <div class="reason-card">
+            <div class="reason-img">
+              <img src="img/reason2.png" alt="幅広い業種に対応">
+            </div>
+            <div class="reason-text">
+              <h3>幅広い業種に対応</h3>
+              <p>
+                製造・物流・サービス業を中心に、<br>
+                多様な業界のニーズに応える人材サービスを展開しています。
+              </p>
+            </div>
+          </div>
+
+          <!-- 理由③ -->
+          <div class="reason-card">
+            <div class="reason-img">
+              <img src="img/reason3.png" alt="スムーズなマッチング">
+            </div>
+            <div class="reason-text">
+              <h3>スムーズなマッチング</h3>
+              <p>
+                独自の登録システムにより、求職者と企業がより早く、<br>
+                最適に出会える仕組みを整えています。
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /.reason-cards -->
+      </div><!-- /.container -->
+    </section>
+
+
 
     <!-- ===== 企業情報セクション（新設） ===== -->
-    <section id="about" class="section">
+    <section id="about" class="section" "fullwidth-about">
       <!-- TODO: h2・会社概要やミッションの簡単な説明 -->
       <!-- 例: <h2>会社情報</h2><p>CMCは、企業と人をつなぐ人材サービスを提供しています。</p> -->
 	  <div class="container">
-		<div class="mission-statement">
-			<h2>Connection is the New Classic.</h2>
-			<h3>that links individuals, vocations, and enterprises together.</h3>
-		</div>
-		<p>より良い仕事を希望されている求職者の方々と人材の活用を要望されている企業様を信頼の絆で結ぶ、<br>
-		人材派遣を軸とする人材サービス事業を展開してまいりました。</p>
-		
-		<p>ものづくり日本を支える製造・物流・サービス業を中心に、首都圏・関東・関西・東北の広い地域をカバー。<br>
-		長く定着して、スキル・経験を高めながら活躍している方も多く、<br>
-		派遣先企業様と派遣スタッフのみなさまの双方から、安心して依頼できると確かな評価をいただいています。</p>
-		
-		<p>昨今、少子化・高齢化が加速するなか、人手不足は社会問題となっています。<br>
-		同時に、ライフスタイルの個性化とともに、人びとの働き方に対するニーズも多様化しています。<br>
-		自ずと、企業は要員を臨機応変に活用でき、働き手は柔軟なワークスタイルを選択できる「人材派遣のメリット」は、<br>
-		ますます真価を発揮すると期待されます。</p>
-		
-		<p>弊社では、お客様企業と派遣スタッフの橋渡しからフォローまで、<br>
-		双方の満足度を高めるべく、親密なコミュニケーションと機動的なサポートを心がけ、<br>
-		専任の担当者が責任を持って手がける体制を確立。</p>
-		
-		<p>こうした取り組みこそ、「つながりを大切にする私どもの強み」であると確信して、<br>
-		関わるすべての方が幸せになれる会社であるよう、全力を尽くしてまいります。</p>
-		
-		<p>「人と人、人と仕事、人と企業のつながり」を大切に。</p>
-	  </div>>
+	  		<div class="mission-statement">
+	  			<h1>CORPORATE<br>INFOMATION</h1>
+	  			<div class="link-left">
+	                  <a href="#" class="btn-link">会社概要</a>
+	  			</div>
+	  			<div class="link-left">
+	                  <a href="#" class="btn-link">沿革</a>
+	  			</div>
+	  			<div class="link-left">
+	                  <a href="#" class="btn-link">営業所一覧</a>
+	  			</div>
+	  		</div>
+	  		<div class="about-image-wrapper">
+	  			<img src="img/biru-kari.jpg" class="about-image">
+	  		</div>
+	  	  </div>
     </section>
 
   </main>
