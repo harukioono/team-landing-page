@@ -13,15 +13,20 @@
     }
 
     #hero.hero-split {
-      display: grid;
-      grid-template-columns: 6fr 4fr;   
-      width: 100vw;
-      height: 80vh;
-      min-height: 500px;
-      max-height: 900px;
-      overflow: hidden;
+  display: grid;
+  grid-template-columns: 6fr 4fr;   
+  width: 100vw;
+  height: 80vh;
+  min-height: 500px;
+  max-height: 900px;
+  overflow: hidden;
+  
+}
 
-    }
+    
+ 
+
+
 
     /* ===== スライド画像エリア ===== */
 
@@ -148,9 +153,86 @@
 /* ====================================================
    REASON
    ==================================================== */
+
+/* ====================================================
+   REASON（理由セクション）
+   ==================================================== */
 #reason {
-  background-color: #87CEEB !important;
+  /* ヒーローとつながる感じのグラデ背景 */
+  background: linear-gradient(135deg, #25c4d3 0%, #7ed3ff 100%);
+  padding: 60px 0 80px;
 }
+
+/* タイトルを中央に */
+#reason .section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+/* カードを横並び（PC） */
+.reason-cards {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* 1枚1枚のカード */
+.reason-card {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 18px;
+  padding: 24px 20px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* アイコン画像 */
+.reason-img img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* 見出し・本文 */
+.reason-text h3 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.reason-text p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 14px;
+  color: #1f2933;
+}
+
+/* スマホでは1列レイアウトにする */
+@media (max-width: 768px) {
+  #reason {
+    padding: 40px 0 48px;
+  }
+
+  .reason-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .reason-card {
+    padding: 20px 18px;
+  }
+
+  #reason .section-title {
+    font-size: 24px;
+  }
+}
+
+
 
 
 /* ====================================================
@@ -165,7 +247,6 @@
     margin: 50px auto;
     padding: 0 20px;
 }
-
 
 .service-item {
     display: flex;
@@ -244,14 +325,21 @@
 /* ====================================================
    ABOUT
    ==================================================== */
+/* 画面の端まで砂の背景を広げる */
 #about {
-	position: relative;
-	
-	background-image: url("../img/about-background.png");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; 
+  position: relative;
+
+  /* ここで「画面幅いっぱい」にする */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background-image: url("../img/about-background.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
+
 
 #about::before {
 	content: "";
@@ -286,14 +374,6 @@ section#about.section {
 	margin-bottom: 10px;
 	font-family: 'M PLUS 1p', sans-serif;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -740,5 +820,63 @@ header.site-header .header__inner {
   transition: all 0.3s ease;
   transform-origin: center;
 }
+
+/* ABOUT セクションを横幅いっぱいに広げる */
+.fullwidth-about {
+  width: 100%;
+  max-width: 100%;
+  padding: 0; /* 必要なら調整 */
+}
+
+/* 背景画像は横まで広げたいので繰り返し防止＋ cover */
+#about {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+/* Hero → Reason のフェード段差 
+.fade-divider {
+  height: 120px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    #87CEEB 100%
+  );
+}*/
+
+/*#services::before {
+  content: "";
+  position: absolute;
+  top: -160px;
+  right: 0;
+  width: 60vw;
+  height: 800px;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(
+      1200px 800px at 110% 0,
+      rgba(255,255,255,0) 70%,
+      rgba(91, 211, 232, 0.45) 72%,
+      rgba(91, 211, 232, 0) 78%
+    ),
+    radial-gradient(
+      1100px 800px at 110% 0,
+      rgba(255,255,255,0) 73%,
+      rgba(64, 196, 222, 0.45) 75%,
+      rgba(64, 196, 222, 0) 81%
+    ),
+    radial-gradient(
+      1000px 800px at 110% 0,
+      rgba(255,255,255,0) 76%,
+      rgba(35, 178, 205, 0.45) 78%,
+      rgba(35, 178, 205, 0) 84%
+    );
+  background-repeat: no-repeat;
+}*/
 
 
