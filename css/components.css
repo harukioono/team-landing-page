@@ -224,20 +224,7 @@
    }
 
 
-.blue-btn {
-    display: inline-block;
-    padding: 6px 12px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: 0.2s;
-}
 
-.blue-btn:hover {
-    background-color: #2980b9;
-}
 
 #about .container {
 	position: relative; 
@@ -288,6 +275,7 @@ section#about.section {
 }
 
 .link-left a.btn-link {
+	position: relative;
   /* ボタンの基本的なスタイル */
   display: block; /* リンクをブロック要素にして、幅いっぱいに広げ、パディングが正しく適用されるようにする */
   width: 100%; /* 親要素の幅いっぱいに広げる */
@@ -311,8 +299,30 @@ section#about.section {
 
 /* 親要素の .link-left のスタイルを調整して、必要に応じて余白を管理することもできます */
 .link-left {
-  margin-bottom: 15px; /* ボタンのグループ全体の間隔 */
+	margin-bottom: 15px; /* ボタンのグループ全体の間隔 */
 }
+
+
+
+.link-left a::before {
+  border-right: 2px solid #fff;
+  border-top: 2px solid #fff;
+  bottom: 0;
+  content: "";
+  height: 7px;
+  width: 7px;
+  margin: auto;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  transform: rotate(45deg);
+  transition: right .3s;
+}
+.link-left a:hover::before {
+  right: 25px;
+}
+
+
 
 /* --- スマートフォン対応 --- */
 @media (max-width: 768px) {
@@ -336,8 +346,6 @@ section#about.section {
         max-width: 100%; 
     }
 }
-
-
 
 
 
